@@ -49,7 +49,12 @@ function renderStatistics(ctx, names, times) {
     };
     //Рисуем столбцы гистограммы, высота которых соответствует времени из массива times, отступаем по 50px от краев
     for (var i = 0; i < times.length; i++) {
-      var colorRec = 'rgba(255, 0, 0, 1)'; //'blue'
+      if (names[i] = 'Вы') {
+        var colorRec = 'rgba(255, 0, 0, 1)' //цвет столбца только для игрока - Вы
+      } else {
+        var randomRGBA = Math.floor(Math.random() * 50);
+        var colorRec = 'rgba(9 + randomRGBA, 212 + randomRGBA, 227 +randomRGBA, 1)'; //различные оттенки голубого
+      };
       ctx.fillStyle = colorRec; 
       var Height = Math.round(150 * times[i] / maxTimes); //калибруем относительно maxTimes
       ctx.fillRect(150 + i * 90, 230 - Height, 190 + i * 90, 230); 
