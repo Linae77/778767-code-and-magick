@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
 * Студент: [Лина Эл](https://up.htmlacademy.ru/javascript/14/user/778767).
-* Наставник: `Неизвестно`.
+* Наставник: `Иван Шмидт`.
 
 ---
 
