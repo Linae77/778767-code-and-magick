@@ -181,21 +181,21 @@
   </div>
 </template>
 <script type="text/javascript">
-  var fireballSize = 22; 
+  var fireballSize = 22; //это переменная, может меняться
   function getFireballSpeed(left) {
     if (left) {return 5};
        return 2;
     };
-  wizardSpeed = 3;
-  wizardWidth = 70;
+  var wizardSpeed = 3; 
+  var wizardWidth = 70;
   function getWizardHeight(wizardWidth) {
      return wizardWidth * 1.337;
   };
   function getWizardX(width) {
-     return width/2 - 35;
+     return width / 2 - wizardWidth / 2;
   };
   function getWizardY(height) {
-     return height * 2/3;
+     return height * 2 / 3 - wizardWidth * 1.337 / 2;
   };
 </script>
 <script src="js/game.js"></script>
