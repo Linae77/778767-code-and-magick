@@ -1,7 +1,5 @@
-var canvas = document.getElementById('canvas');
-if (canvas.getContext) {
-  var ctx = canvas.getContext('2d')
-};
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
 //Функция переноса слов текста, если он не помещается в заданном поле
 function wrapAndRenderText(ctx, text, marginLeft, marginTop, maxWidth, lineHeight) {
   var words = text.split(" ");
@@ -75,6 +73,6 @@ function renderStatistics(ctx, names, times) {
   //Рисуем столбцы гистограммы, высота которых соответствует времени из массива times, отступаем по 50px от краев
   renderHistogram(times, names);
   //добавляем подписи сверху и снизу:
-  renderHistogramText()
+  renderHistogramText();
 };
 
