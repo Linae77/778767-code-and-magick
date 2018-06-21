@@ -1,6 +1,8 @@
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
-//Функция переноса слов текста, если он не помещается в заданном поле
+var canvas = document.getElementById('canvas');
+if (canvas.getContext) {
+  var ctx = canvas.getContext('2d')
+};
+//Функция переноса и вывода текста, если он не помещается в заданном поле
 function wrapAndRenderText(ctx, text, marginLeft, marginTop, maxWidth, lineHeight) {
   var words = text.split(" ");
   var countWords = words.length;
@@ -20,13 +22,13 @@ function wrapAndRenderText(ctx, text, marginLeft, marginTop, maxWidth, lineHeigh
   ctx.fillText(line, marginLeft, marginTop);
 };
 //Функция поиска максимума в массиве
-function maxArrItem(Arr) {}
+function maxArrItem(Arr) {
 var maxItem = Arr[0];
 for (var i = 0; i < Arr.length; i++) {
   if (maxItem < Arr[i] {
     maxItem = Arr[i]
   }
-  return maxItem
+  return maxItem;
 };
 //Функция получения случайного оттенка голубого цвета
 function getRandomBlueColor() {
@@ -73,6 +75,6 @@ function renderStatistics(ctx, names, times) {
   //Рисуем столбцы гистограммы, высота которых соответствует времени из массива times, отступаем по 50px от краев
   renderHistogram(times, names);
   //добавляем подписи сверху и снизу:
-  renderHistogramText();
+  renderHistogramText()
 };
 
