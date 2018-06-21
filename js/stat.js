@@ -1,4 +1,4 @@
-let canvas = document.getElementById('canvas');
+var canvas = document.getElementById('canvas');
 if (canvas.getContext) {
   var ctx = canvas.getContext('2d')
 };
@@ -33,7 +33,7 @@ for (var i = 0; i < Arr.length; i++) {
 //Функция получения случайного оттенка голубого цвета
 function getRandomBlueColor() {
   var randomRGBA = Math.floor(Math.random() * 50);
-  var randomBlue = 'rgba(9 + randomRGBA, 212 + randomRGBA, 227 +randomRGBA, 1)';
+  var randomBlue = 'rgba((9 + randomRGBA), (212 + randomRGBA), (227 +randomRGBA), 1)';
   return randomBlue
 };
 //Функция построения столбцов гистограммы
