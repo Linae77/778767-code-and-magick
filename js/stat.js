@@ -25,7 +25,7 @@ function wrapAndRenderText(ctx, text, marginLeft, marginTop, maxWidth, lineHeigh
 function maxArrItem(Arr) {
 var maxItem = Arr[0];
 for (var i = 0; i < Arr.length; i++) {
-  if (maxItem < Arr[i] {
+  if (maxItem < Arr[i]) {
     maxItem = Arr[i]
   }
   return maxItem;
@@ -33,8 +33,7 @@ for (var i = 0; i < Arr.length; i++) {
 //Функция получения случайного оттенка голубого цвета
 function getRandomBlueColor() {
   var randomRGBA = Math.floor(Math.random() * 50);
-  var randomBlue = 'rgba((9 + randomRGBA), (212 + randomRGBA), (227 +randomRGBA), 1)';
-  return randomBlue
+  return 'rgba((9 + randomRGBA), (212 + randomRGBA), (227 +randomRGBA), 1)';
 };
 //Функция построения столбцов гистограммы
 function renderHistogram(times, names) {
@@ -44,7 +43,6 @@ function renderHistogram(times, names) {
     } else {
       var colorRec = getRandomBlueColor(); //различные оттенки голубого для остальных игроков
     }
-    ;
     ctx.fillStyle = colorRec;
     // Находим максимальное время, соответствующее максимальной высоте столбца гистограммы 150px
     var maxTimes = maxArrItem(times);
