@@ -75,4 +75,3 @@ function renderStatistics(ctx, names, times) {
   //добавляем подписи сверху и снизу:
   renderHistogramText()
 };
-
