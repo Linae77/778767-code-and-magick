@@ -1,4 +1,4 @@
-var canvas = document.getElementById('canvas');
+let canvas = document.getElementById('canvas');
 if (canvas.getContext) {
   var ctx = canvas.getContext('2d')
 };
@@ -18,7 +18,7 @@ function wrapAndRenderText(ctx, text, marginLeft, marginTop, maxWidth, lineHeigh
     else {
       line = testLine;
     }
-  }
+  };
   ctx.fillText(line, marginLeft, marginTop);
 };
 //Функция поиска максимума в массиве
