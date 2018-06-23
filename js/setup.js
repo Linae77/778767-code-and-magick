@@ -1,10 +1,14 @@
-//удаляем класс .hidden у объектов с классом .setup
+//удаляем класс .hidden у объектов с классом .setup +
 var setupItems = document.getElementsByClassName('setup');
 setupItems.classList.remove('hidden');
-//генерируем массив из 4 персонажей случайным образом
-var personages = [];
-//функция генерации персонажа:
-function createPersonage() {
+
+var wizards = [];
+//функция генерации случайного элемента массива
+var generateRandomArrElement = function(arrLength) {
+  return Math.floor(Math.random()*arrLength)
+};
+//функция генерации персонажа случайным образом:
+var createPersonage = function() {
   var names = ['Иван',
     'Хуан Себастьян',
     'Мария',
@@ -28,48 +32,33 @@ function createPersonage() {
     rgb(215, 210, 55),
     rgb(0, 0, 0)];
   var eyesColors = [black, red, blue, yellow, green];
-  function generateRandom(arrLength) {
-    return Math.floor(Math.random()*arrLength)
-  };
-  name = names[generateRandom(8)] + families[generateRandom(8)];
-  coatColor = coatColors[generateRandom(6)];
-  eyesColor = eyesColors[generateRandom(5)];
-  return {name, coatColor, eyesColor}
+  name = names[generateRandomArrElement(8)] + families[generateRandomArrElement(8)];
+  coatColor = coatColors[generateRandomArrElement(6)];
+  eyesColor = eyesColors[generateRandomArrElement(5)];
+  return {name: name, coatColor: coatColor, eyesColor: eyesColor}
 };
-//IIFE функция заполнения массива из 4-х персонажей:
-(function fillPersonagesArr() {
+//IIFE функция заполнения массива wizards из 4-х персонажей:
+(function fillWizards() {
   for (var i = 1; i <= 4; i++) {
-    personages.push(createPersonage())
+    wizards.push(createPersonage())
   }
 })();
-//функция создания волшебника по шаблону вне DOM
-function createNewWizard() {
-  var wizard = document.getElementById('similar-wizard-template');
-  var newWizard = wizard.cloneNode(true); //клонируем волшебника по шаблону
+//шаблон для создания волшебника
+var similarWizardTemplate = document.querySelector('#similar-wizard-template');
+//функция появления нового волшебника по шаблону вне DOM
+function renderWizard(wizard) {
+  var wizardElement = similarWizardTemplate.cloneNode(true);
+  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
+  wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 };
-//IIFE функция заполнения свойств волшебников на основе массива персонажей
-(function fillWizardsArr() {
-  var newWizards = [];
-  for (var i = 0; i < 4; i++) {
-    newWizards.push(createNewWizard());
-    // имя персонажа name запишите как текст в блок .setup-similar-label;
-    var nameItem = newWizards[i].getElementsByClassName('setup-similar-label');
-    nameItem.textContent(personages.name[i]);
-    // Цвет мантии coatColor задайте как цвет заливки fill в стилях элемента .wizard-coat;
-    var coatItem = newWizards[i].getElementsByClassName('wizard-coat');
-    coatItem.setAttribute(fill, personages.coatColor[i]);
-    // Цвет глаз eyesColor задайте как цвет заливки fill в стилях элемента .wizard-eyes.
-    var eyesItem = newWizards[i].getElementsByClassName('wizard-eyes');
-    eyesItem.setAttribute(fill, personages.eyesColor[i]);
-  }
-})();
-//Добавляем сгенерированных волшебников в блок .setup-similar-list
-var similarList = document.getElementsByClassName('setup-similar-list');
+//Генерируем волшебников и добавляем их в блок .setup-similar-list
+var similarListElement = document.getElementsByClassName('setup-similar-list');
 var fragment = document.createDocumentFragment();
-for (var i = 0; i < 4; i++) {
-fragment.appendChild(newWisards[i]);
+for (var i = 0; i < wizards.length; i++) {
+fragment.appendChild(renderWizard(wisards[i]));
 };
-similarList.appendChild(fragment);
-//Показываем блок .setup-similar, удалив у него CSS-класс hidden
+similarListElement.appendChild(fragment);
+//Показываем блок .setup-similar, удалив у него CSS-класс hidden +
 var setupSimilarItems = document.getElementsByClassName('setup-similar');
 setupSimilarItems.classList.remove('hidden');
