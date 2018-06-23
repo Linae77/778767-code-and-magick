@@ -44,7 +44,7 @@ var createPersonage = function () {
   }
 })();
 */
-(var fillWizards = function() {
+(function fillWizards() {
   for (var i = 1; i <= 4; i++) {
     wizards[i] = {
         name: createPersonage().personageName,
