@@ -5,7 +5,7 @@ setupItems.classList.remove('hidden');
 var wizards = [];
 // функция генерации случайного элемента массива
 var generateRandomArrElement = function (arrLength) {
-  return Math.floor( Math.random() * arrLength )
+  return Math.floor(Math.random() * arrLength);
 };
 // функция генерации персонажа случайным образом:
 var createPersonage = function () {
@@ -25,12 +25,12 @@ var createPersonage = function () {
     'Нионго',
     'Ирвинг'];
   var coatColors = [
-    rgb('101', '137', '164'),
-    rgb('241', '43', '107'),
-    rgb('146', '100', '161'),
-    rgb('56', '159', '117'),
-    rgb('215', '210', '55'),
-    rgb('0', '0','0')];
+    'rgb('101', '137', '164')',
+    'rgb('241', '43', '107')',
+    'rgb('146', '100', '161')',
+    'rgb('56', '159', '117')',
+    'rgb('215', '210', '55')',
+    'rgb('0', '0', '0')'];
   var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
   var personageName = names[generateRandomArrElement(8)] + families[generateRandomArrElement(8)];
   var coatColor = coatColors[generateRandomArrElement(6)];
@@ -56,8 +56,7 @@ var renderWizard = function (wizard) {
 var similarListElement = document.getElementsByClassName('setup-similar-list');
 var fragment = document.createDocumentFragment();
 for (var i = 0; i < wizards.length; i++) {
-  var wizard = wizards[i];
-  fragment.appendChild(renderWizard(wisard));
+  fragment.appendChild(renderWizard(wisards[i]));
 }
 similarListElement.appendChild(fragment);
 // Показываем блок .setup-similar, удалив у него CSS-класс hidden +
