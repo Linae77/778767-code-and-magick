@@ -46,7 +46,7 @@ var createPersonage = function() {
 //шаблон для создания волшебника
 var similarWizardTemplate = document.querySelector('#similar-wizard-template');
 //функция появления нового волшебника по шаблону вне DOM
-function renderWizard(wizard) {
+var renderWizard = function(wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
   wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
   wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
