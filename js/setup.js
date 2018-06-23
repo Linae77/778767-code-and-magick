@@ -2,6 +2,29 @@
 var setupItems = document.getElementsByClassName('setup');
 setupItems.classList.remove('hidden');
 
+var names = ['Иван',
+  'Хуан Себастьян',
+  'Мария',
+  'Кристоф',
+  'Виктор', 'Юлия',
+  'Люпита',
+  'Вашингтон'];
+var families = ['да Марья',
+  'Верон',
+  'Мирабелла',
+  'Вальц',
+  'Онопко',
+  'Топольницкая',
+  'Нионго',
+  'Ирвинг'];
+var coatColors = [
+  'rgb(101, 137, 164)',
+  'rgb(241, 43, 107)',
+  'rgb(146, 100, 161)',
+  'rgb(56, 159, 117)',
+  'rgb(215, 210, 55)',
+  'rgb(0, 0, 0)'];
+var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 var wizards = [];
 // функция генерации случайного элемента массива
 var generateRandomArrElement = function (arrLength) {
@@ -9,40 +32,27 @@ var generateRandomArrElement = function (arrLength) {
 };
 // функция генерации персонажа случайным образом:
 var createPersonage = function () {
-  var names = ['Иван',
-    'Хуан Себастьян',
-    'Мария',
-    'Кристоф',
-    'Виктор', 'Юлия',
-    'Люпита',
-    'Вашингтон'];
-  var families = ['да Марья',
-    'Верон',
-    'Мирабелла',
-    'Вальц',
-    'Онопко',
-    'Топольницкая',
-    'Нионго',
-    'Ирвинг'];
-  var coatColors = [
-    'rgb(101, 137, 164)',
-    'rgb(241, 43, 107)',
-    'rgb(146, 100, 161)',
-    'rgb(56, 159, 117)',
-    'rgb(215, 210, 55)',
-    'rgb(0, 0, 0)'];
-  var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
   var personageName = names[generateRandomArrElement(8)] + families[generateRandomArrElement(8)];
   var coatColor = coatColors[generateRandomArrElement(6)];
   var eyesColor = eyesColors[generateRandomArrElement(5)];
   return {personageName: personageName, coatColor: coatColor, eyesColor: eyesColor};
 };
-// IIFE функция заполнения массива wizards из 4-х персонажей:
-(function fillWizards() {
+// IIFE функция заполнения массива wizards из 4-х персонажей - почему-то не работает
+/*(function fillWizards() {
   for (var i = 1; i <= 4; i++) {
     wizards.push(createPersonage());
   }
 })();
+*/
+(var fillWizards = function() {
+  for (var i = 1; i <= 4; i++) {
+    wizards[i] = {
+        name: createPersonage().personageName,
+        coatColor: createPersonage().coatColor,
+        eyesColor: createPersonage().eyesColor
+      }
+  }
+} )();
 // шаблон для создания волшебника
 var similarWizardTemplate = document.querySelector('#similar-wizard-template');
 // функция появления нового волшебника по шаблону вне DOM
