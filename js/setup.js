@@ -47,10 +47,10 @@ var createPersonage = function () {
 (function fillWizards() {
   for (var i = 1; i <= 4; i++) {
     wizards[i] = {
-      name: createPersonage().personageName,
-      coatColor: createPersonage().coatColor,
-      eyesColor: createPersonage().eyesColor
-      };
+      name: (names[generateRandomArrElement(8)] + families[generateRandomArrElement(8)]),
+      coatColor: (coatColors[generateRandomArrElement(6)]),
+      eyesColor: (eyesColors[generateRandomArrElement(5)])
+    };
   }
 })();
 // шаблон для создания волшебника
