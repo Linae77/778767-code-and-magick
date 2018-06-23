@@ -30,6 +30,7 @@ var wizards = [];
 var generateRandomArrElement = function (arrLength) {
   return Math.floor(Math.random() * arrLength);
 };
+/*
 // функция генерации персонажа случайным образом:
 var createPersonage = function () {
   var personageName = names[generateRandomArrElement(8)] + families[generateRandomArrElement(8)];
@@ -38,14 +39,14 @@ var createPersonage = function () {
   return {personageName: personageName, coatColor: coatColor, eyesColor: eyesColor};
 };
 // IIFE функция заполнения массива wizards из 4-х персонажей - почему-то не работает
-/* (function fillWizards() {
-  for (var i = 1; i <= 4; i++) {
+ (function fillWizards() {
+  for (var i = 0; i < 4; i++) {
     wizards.push(createPersonage());
   }
 })();
-*/
+
 (function fillWizards() {
-  for (var i = 1; i <= 4; i++) {
+  for (var i = 0; i < 4; i++) {
     wizards[i] = {
       name: (names[generateRandomArrElement(8)] + families[generateRandomArrElement(8)]),
       coatColor: (coatColors[generateRandomArrElement(6)]),
@@ -53,6 +54,13 @@ var createPersonage = function () {
     };
   }
 })();
+*/
+for (var i = 0; i < 4; i++) {
+  wizards[i] = {
+    name: (names[generateRandomArrElement(8)] + families[generateRandomArrElement(8)]),
+    coatColor: (coatColors[generateRandomArrElement(6)]),
+    eyesColor: (eyesColors[generateRandomArrElement(5)])
+  };
 // шаблон для создания волшебника
 var similarWizardTemplate = document.querySelector('#similar-wizard-template');
 // функция появления нового волшебника по шаблону вне DOM
