@@ -44,7 +44,7 @@ function renderStatistics(ctx, names, times) {
   //Находим максимальное время, соответствующее максимальной высоте столбца гистограммы 150px
   var maxTimes = times[0];
   for (var i = 0; i < times.length; i++) {
-    if (maxTimes < times[i] {
+    if (maxTimes < times[i]) {
       maxTimes = times[i]
     }
   };
