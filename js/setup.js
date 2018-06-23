@@ -38,7 +38,7 @@ var createPersonage = function () {
   return {personageName: personageName, coatColor: coatColor, eyesColor: eyesColor};
 };
 // IIFE функция заполнения массива wizards из 4-х персонажей - почему-то не работает
-/*(function fillWizards() {
+/* (function fillWizards() {
   for (var i = 1; i <= 4; i++) {
     wizards.push(createPersonage());
   }
@@ -47,12 +47,12 @@ var createPersonage = function () {
 (function fillWizards() {
   for (var i = 1; i <= 4; i++) {
     wizards[i] = {
-        name: createPersonage().personageName,
-        coatColor: createPersonage().coatColor,
-        eyesColor: createPersonage().eyesColor
-      }
+      name: createPersonage().personageName,
+      coatColor: createPersonage().coatColor,
+      eyesColor: createPersonage().eyesColor
+      };
   }
-} )();
+})();
 // шаблон для создания волшебника
 var similarWizardTemplate = document.querySelector('#similar-wizard-template');
 // функция появления нового волшебника по шаблону вне DOM
