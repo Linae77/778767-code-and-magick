@@ -31,20 +31,20 @@ var generateRandomArrElement = function (arrLength) {
   return Math.floor(Math.random() * arrLength);
 };
 /*
-// функция генерации персонажа случайным образом:
+// функция генерации персонажа случайным образом- почему-то не работает
 var createPersonage = function () {
   var personageName = names[generateRandomArrElement(8)] + families[generateRandomArrElement(8)];
   var coatColor = coatColors[generateRandomArrElement(6)];
   var eyesColor = eyesColors[generateRandomArrElement(5)];
   return {personageName: personageName, coatColor: coatColor, eyesColor: eyesColor};
 };
-// IIFE функция заполнения массива wizards из 4-х персонажей - почему-то не работает
+-----
  (function fillWizards() {
   for (var i = 0; i < 4; i++) {
     wizards.push(createPersonage());
   }
 })();
-
+-----
 (function fillWizards() {
   for (var i = 0; i < 4; i++) {
     wizards[i] = {
