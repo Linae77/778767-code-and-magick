@@ -15,15 +15,14 @@ function wrapAndRenderText(context, text, marginLeft, marginTop, maxWidth, lineH
       context.fillText(line, marginLeft, marginTop);
       line = words[n] + ' ';
       marginTop += lineHeight;
-    }
-    else {
+    } else {
       line = testLine;
     }
   }
   context.fillText(line, marginLeft, marginTop);
 }
 // Функция поиска максимума в массиве
-function maxArrItem(items) {
+var maxArrItem = function (items) {
   var maxItem = items[0];
   for (var i = 0; i < items.length; i++) {
     if (maxItem < items[i]) {
@@ -31,14 +30,15 @@ function maxArrItem(items) {
     }
   }
   return maxItem;
-}
+};
 // Функция получения случайного оттенка голубого цвета
 function getRandomBlueColor() {
   var randomRGBA = Math.floor(Math.random() * 50);
-  var a = parseInt(9 + randomRGBA, 10);
-  var b = parseInt(212 + randomRGBA, 10);
-  var c = parseInt(227 + randomRGBA, 10);
-  return 'rgba(a, b, c, 1)';
+  var a = 9 + randomRGBA;
+  var b = 212 + randomRGBA;
+  var c = 227 + randomRGBA;
+  var rgba = {a: a, b: b, c: c};
+  return rgba.a + ', ' + rgba.b + ', ' + rgba.c + ', ' + 1; // строка
 }
 // Функция построения столбцов гистограммы
 function renderHistogram(times, names) {
@@ -75,8 +75,9 @@ function renderStatistics(context, names, times) {
   context.fillStyle = 'black';
   // выводим текст на облаке
   wrapAndRenderText(ctx, text, MARGIN_LEFT, MARGIN_TOP, MAX_WIDTH, lineHeight);
-  // рисуем столбцы гистограммы, высота которых соответствует времени из массива times, отступаем по 50px от краев
+  // рыисуем столбцы гистограммы, высота которых соответствует времени из массива times, отступаем по 50px от краев
   renderHistogram(times, names);
   // добавляем подписи сверху и снизу:
   renderHistogramText();
 }
+renderStatistics(null, null, null);
