@@ -74,7 +74,7 @@ function renderStatistics(context, names, times) {
   context.fillStyle = 'black';
   // выводим текст на облаке
   wrapAndRenderText(ctx, text, MARGIN_LEFT, MARGIN_TOP, MAX_WIDTH, lineHeight);
-  // рисуем столбцы гистограммы, высота которых соответствует времени из массива times, отступаем по 50px от краев
+  // рыисуем столбцы гистограммы, высота которых соответствует времени из массива times, отступаем по 50px от краев
   renderHistogram(times, names);
   // добавляем подписи сверху и снизу:
   renderHistogramText();
