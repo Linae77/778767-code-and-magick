@@ -34,7 +34,7 @@ function createPersonage() {
   name = names[generateRandom(8)] + families[generateRandom(8)];
   coatColor = coatColors[generateRandom(6)];
   eyesColor = eyesColors[generateRandom(5)];
-  return {name, coatColor, eyesColor}
+  return {name: name, coatColor: coatColor, eyesColor: eyesColor}
 };
 //IIFE функция заполнения массива из 4-х персонажей:
 (function fillPersonagesArr() {

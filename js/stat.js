@@ -15,15 +15,14 @@ function wrapAndRenderText(context, text, marginLeft, marginTop, maxWidth, lineH
       context.fillText(line, marginLeft, marginTop);
       line = words[n] + ' ';
       marginTop += lineHeight;
-    }
-    else {
+    } else {
       line = testLine;
     }
   }
   context.fillText(line, marginLeft, marginTop);
 }
 // Функция поиска максимума в массиве
-function maxArrItem(items) {
+var maxArrItem = function (items) {
   var maxItem = items[0];
   for (var i = 0; i < items.length; i++) {
     if (maxItem < items[i]) {
@@ -31,25 +30,27 @@ function maxArrItem(items) {
     }
     return maxItem;
   }
-}
+};
 // Функция получения случайного оттенка голубого цвета
 function getRandomBlueColor() {
   var randomRGBA = Math.floor(Math.random() * 50);
-  var a = 9 + randomRGBA, b = 212 + randomRGBA, c = 227 + randomRGBA;
+  var a = 9 + randomRGBA;
+  var b = 212 + randomRGBA;
+  var c = 227 + randomRGBA;
   return 'rgba(a, b, c, 1)';
 }
 // Функция построения столбцов гистограммы
 function renderHistogram(times, names) {
   for (var i = 0, colorRec; i < times.length; i++) {
-    if (names[i] == 'Вы') {
-      colorRec = 'rgba(255, 0, 0, 1)'; //цвет столбца только для игрока - Вы
+    if (names[i] === 'Вы') {
+      colorRec = 'rgba(255, 0, 0, 1)'; // цвет столбца только для игрока - Вы
     } else {
-      colorRec = getRandomBlueColor(); //различные оттенки голубого для остальных игроков
+      colorRec = getRandomBlueColor(); // различные оттенки голубого для остальных игроков
     }
     ctx.fillStyle = colorRec;
     // Находим максимальное время, соответствующее максимальной высоте столбца гистограммы 150px
     var maxTimes = maxArrItem(times);
-    var height = Math.round(150 * times[i] / maxTimes); //калибруем относительно maxTimes
+    var height = Math.round(150 * times[i] / maxTimes); // калибруем относительно maxTimes
     ctx.fillRect(150 + i * 90, 230 - height, 190 + i * 90, 230);
   }
 }
@@ -61,9 +62,9 @@ function renderHistogramText(times, height, x) {
 // Функция построения статистики игроков
 function renderStatistics(context, names, times) {
   context.fillStyle = 'rgba(0, 0, 0, 0.7)';
-  context.fillRect(110, 20, 530, 290); //тень от облака
+  context.fillRect(110, 20, 530, 290); // тень от облака
   context.fillStyle = 'white';
-  context.fillRect(100, 10, 520, 280); //белое облако сверху тени
+  context.fillRect(100, 10, 520, 280); // белое облако сверху тени
   var MAX_WIDTH = 420; // ширина поля, где выводится текст
   var lineHeight = 22; // берем высоту строки 16px + межстрочный интервал 6px
   var MARGIN_LEFT = 110;
