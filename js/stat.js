@@ -28,8 +28,8 @@ var maxArrItem = function (items) {
     if (maxItem < items[i]) {
       maxItem = items[i];
     }
-    return maxItem;
   }
+  return maxItem;
 };
 // Функция получения случайного оттенка голубого цвета
 function getRandomBlueColor() {
@@ -37,7 +37,8 @@ function getRandomBlueColor() {
   var a = 9 + randomRGBA;
   var b = 212 + randomRGBA;
   var c = 227 + randomRGBA;
-  return 'rgba(a, b, c, 1)';
+  var rgba = {a: a, b: b, c: c};
+  return string(rgba.a) + ', ' + string(rgba.b) + ', ' + string(rgba.c) + ', ' + 1; // строка
 }
 // Функция построения столбцов гистограммы
 function renderHistogram(times, names) {
@@ -78,4 +79,5 @@ function renderStatistics(context, names, times) {
   renderHistogram(times, names);
   // добавляем подписи сверху и снизу:
   renderHistogramText();
-}
+};
+renderStatistics(null, null, null);

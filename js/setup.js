@@ -1,10 +1,10 @@
-//удаляем класс .hidden у объектов с классом .setup
+'use strict';
+// удаляем класс .hidden у объектов с классом .setup
 var setupItems = document.getElementsByClassName('setup');
 setupItems.classList.remove('hidden');
-//генерируем массив из 4 персонажей случайным образом
-var personages = [];
-//функция генерации персонажа:
-function createPersonage() {
+// генерируем массив из 4 персонажей случайным образом
+var PERSONAGE_NUMBER = 4;
+var createPersonage = function() {
   var names = ['Иван',
     'Хуан Себастьян',
     'Мария',
@@ -21,55 +21,53 @@ function createPersonage() {
     'Нионго',
     'Ирвинг'];
   var coatColors = [
-    rgb(101, 137, 164),
-    rgb(241, 43, 107),
-    rgb(146, 100, 161),
-    rgb(56, 159, 117),
-    rgb(215, 210, 55),
-    rgb(0, 0, 0)];
-  var eyesColors = [black, red, blue, yellow, green];
-  function generateRandom(arrLength) {
-    return Math.floor(Math.random()*arrLength)
+    'rgb(101, 137, 164)',
+    'rgb(241, 43, 107)',
+    'rgb(146, 100, 161)',
+    'rgb(56, 159, 117)',
+    'rgb(215, 210, 55)',
+    'rgb(0, 0, 0)'];
+  var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
+  var generateRandom = function (arrLength) {
+    return Math.floor(Math.random() * arrLength);
   };
-  name = names[generateRandom(8)] + families[generateRandom(8)];
-  coatColor = coatColors[generateRandom(6)];
-  eyesColor = eyesColors[generateRandom(5)];
-  return {name: name, coatColor: coatColor, eyesColor: eyesColor}
+  var personageName = names[generateRandom(8)] + families[generateRandom(8)];
+  var coatColor = coatColors[generateRandom(6)];
+  var eyesColor = eyesColors[generateRandom(5)];
+  return {name: personageName, coatColor: coatColor, eyesColor: eyesColor};
 };
-//IIFE функция заполнения массива из 4-х персонажей:
-(function fillPersonagesArr() {
-  for (var i = 1; i <= 4; i++) {
-    personages.push(createPersonage())
+// IIFE функция заполнения массива из 4-х персонажей:
+var createItems = function (number) {
+  var items = [];
+  for (var i = 0; i < number; i++) {
+    personages.push(createPersonage());
   }
-})();
-//функция создания волшебника по шаблону вне DOM
-function createNewWizard() {
-  var wizard = document.getElementById('similar-wizard-template');
-  var newWizard = wizard.cloneNode(true); //клонируем волшебника по шаблону
+  return items;
 };
-//IIFE функция заполнения свойств волшебников на основе массива персонажей
-(function fillWizardsArr() {
-  var newWizards = [];
-  for (var i = 0; i < 4; i++) {
-    newWizards.push(createNewWizard());
-    // имя персонажа name запишите как текст в блок .setup-similar-label;
-    var nameItem = newWizards[i].getElementsByClassName('setup-similar-label');
-    nameItem.textContent(personages.name[i]);
-    // Цвет мантии coatColor задайте как цвет заливки fill в стилях элемента .wizard-coat;
-    var coatItem = newWizards[i].getElementsByClassName('wizard-coat');
-    coatItem.setAttribute(fill, personages.coatColor[i]);
-    // Цвет глаз eyesColor задайте как цвет заливки fill в стилях элемента .wizard-eyes.
-    var eyesItem = newWizards[i].getElementsByClassName('wizard-eyes');
-    eyesItem.setAttribute(fill, personages.eyesColor[i]);
+// создаем массив волшебников
+var wizards = createItems(PERSONAGE_NUMBER);
+var wizardTemplate = document.getElementById('#similar-wizard-template');
+// функция создания по шаблону и заполнения DOM-элемента
+var renderWizard = function (item) {
+  var newElement = wizardTemplate.cloneNode(true);
+  newElement.querySelector('.setup-similar-label').textContent = personages.name[i];
+  newElement.querySelector('.wizard-coat').style.fill = personages.coatColor[i];
+  newElement.querySelector('.wizard-eyes').style.fill = personages.eyesColor[i];
+};
+// функция добавления созданных элементов в блок с использованием DocumentFragment
+var addElementsDOM = function (items, block) {
+  var blockList = document.querySelector(block);
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < items.length; i++) {
+    fragment.appendChild(renderWizard(items[i]));
   }
-})();
-//Добавляем сгенерированных волшебников в блок .setup-similar-list
-var similarList = document.getElementsByClassName('setup-similar-list');
-var fragment = document.createDocumentFragment();
-for (var i = 0; i < 4; i++) {
-fragment.appendChild(newWisards[i]);
+  block1List.appendChild(fragment);
 };
-similarList.appendChild(fragment);
+// добавляем созданные DOM-элементы в блок .setup-similar-list
+addElementsDOM(wizards, '.setup-similar-list');
+
 //Показываем блок .setup-similar, удалив у него CSS-класс hidden
 var setupSimilarItems = document.getElementsByClassName('setup-similar');
 setupSimilarItems.classList.remove('hidden');
+
+
