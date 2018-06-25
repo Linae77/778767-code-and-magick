@@ -4,7 +4,7 @@ var setupItems = document.getElementsByClassName('setup');
 setupItems.classList.remove('hidden');
 // генерируем массив из 4 персонажей случайным образом
 var PERSONAGE_NUMBER = 4;
-var createPersonage = function() {
+var createPersonage = function () {
   var names = ['Иван',
     'Хуан Себастьян',
     'Мария',
@@ -40,7 +40,7 @@ var createPersonage = function() {
 var createItems = function (number) {
   var items = [];
   for (var i = 0; i < number; i++) {
-    personages.push(createPersonage());
+    items.push(createPersonage());
   }
   return items;
 };
@@ -50,9 +50,9 @@ var wizardTemplate = document.getElementById('#similar-wizard-template');
 // функция создания по шаблону и заполнения DOM-элемента
 var renderWizard = function (item) {
   var newElement = wizardTemplate.cloneNode(true);
-  newElement.querySelector('.setup-similar-label').textContent = personages.name[i];
-  newElement.querySelector('.wizard-coat').style.fill = personages.coatColor[i];
-  newElement.querySelector('.wizard-eyes').style.fill = personages.eyesColor[i];
+  newElement.querySelector('.setup-similar-label').textContent = item.name;
+  newElement.querySelector('.wizard-coat').style.fill = item.coatColor;
+  newElement.querySelector('.wizard-eyes').style.fill = item.eyesColor;
 };
 // функция добавления созданных элементов в блок с использованием DocumentFragment
 var addElementsDOM = function (items, block) {
@@ -61,12 +61,12 @@ var addElementsDOM = function (items, block) {
   for (var i = 0; i < items.length; i++) {
     fragment.appendChild(renderWizard(items[i]));
   }
-  block1List.appendChild(fragment);
+  blockList.appendChild(fragment);
 };
 // добавляем созданные DOM-элементы в блок .setup-similar-list
 addElementsDOM(wizards, '.setup-similar-list');
 
-//Показываем блок .setup-similar, удалив у него CSS-класс hidden
+// Показываем блок .setup-similar, удалив у него CSS-класс hidden
 var setupSimilarItems = document.getElementsByClassName('setup-similar');
 setupSimilarItems.classList.remove('hidden');
 

@@ -38,7 +38,7 @@ function getRandomBlueColor() {
   var b = 212 + randomRGBA;
   var c = 227 + randomRGBA;
   var rgba = {a: a, b: b, c: c};
-  return string(rgba.a) + ', ' + string(rgba.b) + ', ' + string(rgba.c) + ', ' + 1; // строка
+  return rgba.a + ', ' + rgba.b + ', ' + rgba.c + ', ' + 1; // строка
 }
 // Функция построения столбцов гистограммы
 function renderHistogram(times, names) {
@@ -79,5 +79,5 @@ function renderStatistics(context, names, times) {
   renderHistogram(times, names);
   // добавляем подписи сверху и снизу:
   renderHistogramText();
-};
+}
 renderStatistics(null, null, null);
