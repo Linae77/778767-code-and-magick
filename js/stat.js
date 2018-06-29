@@ -1,8 +1,4 @@
 'use strict';
-var canvas = document.getElementById('canvas');
-if (canvas.getContext) {
-  var ctx = canvas.getContext('2d');
-}
 // Функция переноса и вывода текста, если он не помещается в заданном поле
 function wrapAndRenderText(context, text, marginLeft, marginTop, maxWidth, lineHeight) {
   var words = text.split(' ');
@@ -53,15 +49,16 @@ function renderHistogram(times, names) {
     var maxTimes = maxArrItem(times);
     var height = Math.round(150 * times[i] / maxTimes); // калибруем относительно maxTimes
     ctx.fillRect(150 + i * 90, 230 - height, 190 + i * 90, 230);
+    ctx.fillText('times[i]', 150 + x * 90, 220 - height); // выводим подписи к столбцам
+    ctx.fillText('names[i]', 150 + x * 90, 250);
   }
-}
-// Функция вывода текста сверху и снизу столбцов гистограммы
-function renderHistogramText(times, height, x) {
-  ctx.fillText('times[x]', 150 + x * 90, 220 - height);
-  ctx.fillText('names[x]', 150 + x * 90, 250);
 }
 // Функция построения статистики игроков
 function renderStatistics(context, names, times) {
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+  }
   context.fillStyle = 'rgba(0, 0, 0, 0.7)';
   context.fillRect(110, 20, 530, 290); // тень от облака
   context.fillStyle = 'white';
@@ -77,7 +74,4 @@ function renderStatistics(context, names, times) {
   wrapAndRenderText(ctx, text, MARGIN_LEFT, MARGIN_TOP, MAX_WIDTH, lineHeight);
   // рыисуем столбцы гистограммы, высота которых соответствует времени из массива times, отступаем по 50px от краев
   renderHistogram(times, names);
-  // добавляем подписи сверху и снизу:
-  renderHistogramText();
-}
-renderStatistics(null, null, null);
+};
