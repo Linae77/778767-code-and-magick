@@ -38,6 +38,10 @@ function getRandomBlueColor() {
 }
 // Функция построения столбцов гистограммы
 function renderHistogram(times, names) {
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+  }
   for (var i = 0, colorRec; i < times.length; i++) {
     if (names[i] === 'Вы') {
       colorRec = 'rgba(255, 0, 0, 1)'; // цвет столбца только для игрока - Вы
@@ -49,8 +53,8 @@ function renderHistogram(times, names) {
     var maxTimes = maxArrItem(times);
     var height = Math.round(150 * times[i] / maxTimes); // калибруем относительно maxTimes
     ctx.fillRect(150 + i * 90, 230 - height, 190 + i * 90, 230);
-    ctx.fillText('times[i]', 150 + x * 90, 220 - height); // выводим подписи к столбцам
-    ctx.fillText('names[i]', 150 + x * 90, 250);
+    ctx.fillText('times[i]', 150 + i * 90, 220 - height); // выводим подписи к столбцам
+    ctx.fillText('names[i]', 150 + i * 90, 250);
   }
 }
 // Функция построения статистики игроков
