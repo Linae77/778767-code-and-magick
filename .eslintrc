@@ -1,7 +1,12 @@
 root: true
 
+
+
 env:
-  browser: true
+  
+	browser: true
+
 
 extends:
-  "htmlacademy/es5"
+  
+	"htmlacademy/es5"
