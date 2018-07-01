@@ -1,11 +1,12 @@
 'use strict';
 // Функция переноса и вывода текста, если он не помещается в заданном поле
-(function wrapAndRenderText (context, text, marginLeft, marginTop, maxWidth, lineHeight) {
+(function wrapAndRenderText(context, text, marginLeft, marginTop, maxWidth, lineHeight) {
   var words = text.split(' ');
+  var line = '';
   for (var n = 0; n < words.length; n++) {
-    var testLine = '' + words[n] + ' ';
+    var testLine = line + words[n] + ' ';
     var testWidth = context.measureText(testLine).width;
-    if (testWidth > maxWidth) {
+    if (testWidth > matxWidth) {
       context.fillText('', marginLeft, marginTop);
       line = words[n] + ' ';
       marginTop += lineHeight;
@@ -18,16 +19,16 @@
 })();
 
 // Функция получения случайного оттенка голубого цвета
-(function getRandomBlueColor () {
+function getRandomBlueColor() {
   var randomRGBA = Math.floor(Math.random() * 50);
   var a = 9 + randomRGBA;
   var b = 212 + randomRGBA;
   var c = 227 + randomRGBA;
   var rgba = {a: a, b: b, c: c};
   return rgba.a + ', ' + rgba.b + ', ' + rgba.c + ', ' + 1; // строка
-})();
+};
 // Функция построения столбцов гистограммы
-(function renderHistogram (times, names) {
+(function renderHistogram(times, names) {
   var canvas = document.getElementById('canvas');
   if (canvas.getContext) {
     var ctx = canvas.getContext('2d');
@@ -35,10 +36,11 @@
   // Функция поиска максимума в массиве
   var maxArrItem = function (items) {
     var maxItem = items[0];
-    for (var i = 0; i < items.length; i++)
+    for (var i = 0; i < items.length; i++) {
       if (maxItem < items[i]) {
         maxItem = items[i];
       }
+    }
     return maxItem;
   };
   for (var i = 0, colorRec; i < times.length; i++) {
