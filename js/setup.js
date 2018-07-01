@@ -2,13 +2,14 @@
 
 var setup = document.querySelector('.setup');
 var setupSimilar = document.getElementsByClassName('setup-similar');
-
+/*
+var similarListElement = setup.querySelector('.setup-similar-list');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = document.querySelector('.setup-close');
 var setupOpenIcon = document.querySelector('.setup-open-icon');
 var setupWizard = setup.querySelector('.setup-wizard');
-var similarListElement = setup.querySelector('.setup-similar-list');
 
+*/
 // удаляем класс .hidden у объектов с классом .setup
 setup.classList.remove('hidden');
 // генерируем массив из 4 персонажей случайным образом
@@ -79,7 +80,7 @@ addElementsDOM(wizards, '.setup-similar-list');
 setupSimilar.classList.remove('hidden');
 
 // ==========Далее задание "Одеть Надежду" модуля 4===============
-
+/*
 var ESC_KEYCODE = 13;
 
 setupOpen.addEventListener('click', function() {
@@ -136,3 +137,4 @@ setupClose.addEventListener('keydown', function (evt) {
     closePopup();
   }
 });
+*?
