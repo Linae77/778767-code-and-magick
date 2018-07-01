@@ -1,14 +1,13 @@
 'use strict';
 
 var setup = document.querySelector('.setup');
-var setupSimilar = document.getElementsByClassName('setup-similar');
+var setupSimilar = document.getElementsByClassName('setup-similar')
 /*
 var similarListElement = setup.querySelector('.setup-similar-list');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = document.querySelector('.setup-close');
 var setupOpenIcon = document.querySelector('.setup-open-icon');
 var setupWizard = setup.querySelector('.setup-wizard');
-
 */
 // удаляем класс .hidden у объектов с классом .setup
 setup.classList.remove('hidden');
@@ -137,4 +136,4 @@ setupClose.addEventListener('keydown', function (evt) {
     closePopup();
   }
 });
-*?
+*/
