@@ -38,7 +38,7 @@
       }
     }
     return maxItem;
-  };
+  }
   if (canvas.getContext) {
     var ctx = canvas.getContext('2d');
   }
