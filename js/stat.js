@@ -1,6 +1,10 @@
 'use strict';
 // Функция переноса и вывода текста, если он не помещается в заданном поле
-var wrapAndRenderText = function(context, text, marginLeft, marginTop, maxWidth, lineHeight) {
+var wrapAndRenderText = function (context, text, marginLeft, marginTop, maxWidth, lineHeight) {
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+  }
   var words = text.split(' ');
   var countWords = words.length;
   var line = '';
@@ -17,9 +21,9 @@ var wrapAndRenderText = function(context, text, marginLeft, marginTop, maxWidth,
   }
   context.fillText(line, marginLeft, marginTop);
   return wrapAndRenderText;
-}(ctx, text, MARGIN_LEFT, MARGIN_TOP, MAX_WIDTH, lineHeight);
+}();
 // Функция поиска максимума в массиве
-var maxArrItem = function(items) {
+var maxArrItem = function (items) {
   var maxItem = items[0];
   for (var i = 0; i < items.length; i++) {
     if (maxItem < items[i]) {
@@ -27,9 +31,9 @@ var maxArrItem = function(items) {
     }
   }
   return maxItem;
-}(times);
+}();
 // Функция получения случайного оттенка голубого цвета
-var getRandomBlueColor = function() {
+var getRandomBlueColor = function () {
   var randomRGBA = Math.floor(Math.random() * 50);
   var a = 9 + randomRGBA;
   var b = 212 + randomRGBA;
@@ -38,7 +42,7 @@ var getRandomBlueColor = function() {
   return rgba.a + ', ' + rgba.b + ', ' + rgba.c + ', ' + 1; // строка
 }();
 // Функция построения столбцов гистограммы
-var renderHistogram = function(times, names) {
+var renderHistogram = function (times, names) {
   var canvas = document.getElementById('canvas');
   if (canvas.getContext) {
     var ctx = canvas.getContext('2d');
@@ -51,16 +55,16 @@ var renderHistogram = function(times, names) {
     }
     ctx.fillStyle = colorRec;
     // Находим максимальное время, соответствующее максимальной высоте столбца гистограммы 150px
-    var maxTimes = maxArrItem(times);
+    var maxTimes = maxArrItem (times);
     var height = Math.round(150 * times[i] / maxTimes); // калибруем относительно maxTimes
     ctx.fillRect(150 + i * 90, 230 - height, 190 + i * 90, 230);
     ctx.fillText('times[i]', 150 + i * 90, 220 - height); // выводим подписи к столбцам
     ctx.fillText('names[i]', 150 + i * 90, 250);
   }
   return renderHistogram;
-}(times, names);
+}();
 // Функция построения статистики игроков
-var renderStatistics = function(context, names, times) {
+var renderStatistics = function (context, names, times) {
   var canvas = document.getElementById('canvas');
   if (canvas.getContext) {
     var ctx = canvas.getContext('2d');
@@ -80,5 +84,5 @@ var renderStatistics = function(context, names, times) {
   wrapAndRenderText(ctx, text, MARGIN_LEFT, MARGIN_TOP, MAX_WIDTH, lineHeight);
   // рыисуем столбцы гистограммы, высота которых соответствует времени из массива times, отступаем по 50px от краев
   renderHistogram(times, names);
-  return renderStatistics
-}(context, names, times);
+  return renderStatistics;
+}();
