@@ -39,7 +39,6 @@
       if (maxItem < items[i]) {
         maxItem = items[i];
       }
-    }
     return maxItem;
   };
   for (var i = 0, colorRec; i < times.length; i++) {
