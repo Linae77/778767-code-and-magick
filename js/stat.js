@@ -28,7 +28,7 @@ var getMaxItem = function (items) {
 };
 
 // Функция получения случайного оттенка голубого цвета
-function getRandomBlueColor() {
+var getRandomBlueColor = function () {
   var randomRGBA = Math.floor(Math.random() * 50);
   var a = 9 + randomRGBA;
   var b = 212 + randomRGBA;
