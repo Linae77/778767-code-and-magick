@@ -29,6 +29,9 @@
 // Функция построения столбцов гистограммы
 (function renderHistogram (times, names) {
   var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+  }
   // Функция поиска максимума в массиве
   var maxArrItem = function (items) {
     var maxItem = items[0];
@@ -38,10 +41,7 @@
       }
     }
     return maxItem;
-  }
-  if (canvas.getContext) {
-    var ctx = canvas.getContext('2d');
-  }
+  };
   for (var i = 0, colorRec; i < times.length; i++) {
     if (names[i] === 'Вы') {
       colorRec = 'rgba(255, 0, 0, 1)'; // цвет столбца только для игрока - Вы
