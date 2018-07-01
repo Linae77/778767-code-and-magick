@@ -27,14 +27,14 @@ var getMaxItem = function (items) {
   return maxItem;
 };
 
-// IIFE функция получения случайного оттенка голубого цвета
-(function getRandomBlueColor() {
+// Функция получения случайного оттенка голубого цвета
+function getRandomBlueColor() {
   var randomRGBA = Math.floor(Math.random() * 50);
   var a = 9 + randomRGBA;
   var b = 212 + randomRGBA;
   var c = 227 + randomRGBA;
   return 'rgba(' + a + ', ' + b + ', ' + c + ', 1)';
-})();
+};
 
 // Генерация облака результатов
 var renderCloud = function (ctx, x, y, color) {
@@ -60,13 +60,13 @@ var renderName = function (ctx, name, x) {
 };
 
 // Генерация текста список результатов
-  var renderText = function (ctx, font, color) {
-    ctx.font = font;
-    ctx.fillStyle = color;
-    ctx.textBaseline = 'hanging';
-    ctx.fillText('Ура вы победили!', CLOUD_X + GAP * 2, CLOUD_Y + GAP * 2);
-    ctx.fillText('Список результатов:', CLOUD_X + GAP * 2, CLOUD_Y + GAP * 4);
-  };
+var renderText = function (ctx, font, color) {
+  ctx.font = font;
+  ctx.fillStyle = color;
+  ctx.textBaseline = 'hanging';
+  ctx.fillText('Ура вы победили!', CLOUD_X + GAP * 2, CLOUD_Y + GAP * 2);
+  ctx.fillText('Список результатов:', CLOUD_X + GAP * 2, CLOUD_Y + GAP * 4);
+};
 
 // Функция построения статистики игроков
 window.renderStatistics = function (ctx, names, times) {
