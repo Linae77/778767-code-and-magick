@@ -1,6 +1,6 @@
 'use strict';
 // Функция переноса и вывода текста, если он не помещается в заданном поле
-function wrapAndRenderText(context, text, marginLeft, marginTop, maxWidth, lineHeight) {
+(var wrapAndRenderText = function (context, text, marginLeft, marginTop, maxWidth, lineHeight) {
   var words = text.split(' ');
   var countWords = words.length;
   var line = '';
@@ -16,9 +16,9 @@ function wrapAndRenderText(context, text, marginLeft, marginTop, maxWidth, lineH
     }
   }
   context.fillText(line, marginLeft, marginTop);
-}
+})();
 // Функция поиска максимума в массиве
-var maxArrItem = function (items) {
+(var maxArrItem = function (items) {
   var maxItem = items[0];
   for (var i = 0; i < items.length; i++) {
     if (maxItem < items[i]) {
@@ -26,18 +26,18 @@ var maxArrItem = function (items) {
     }
   }
   return maxItem;
-};
+})();
 // Функция получения случайного оттенка голубого цвета
-function getRandomBlueColor() {
+(var getRandomBlueColor = function() {
   var randomRGBA = Math.floor(Math.random() * 50);
   var a = 9 + randomRGBA;
   var b = 212 + randomRGBA;
   var c = 227 + randomRGBA;
   var rgba = {a: a, b: b, c: c};
   return rgba.a + ', ' + rgba.b + ', ' + rgba.c + ', ' + 1; // строка
-}
+})();
 // Функция построения столбцов гистограммы
-function renderHistogram(times, names) {
+(var renderHistogram = function (times, names) {
   var canvas = document.getElementById('canvas');
   if (canvas.getContext) {
     var ctx = canvas.getContext('2d');
@@ -56,9 +56,9 @@ function renderHistogram(times, names) {
     ctx.fillText('times[i]', 150 + i * 90, 220 - height); // выводим подписи к столбцам
     ctx.fillText('names[i]', 150 + i * 90, 250);
   }
-}
+})();
 // Функция построения статистики игроков
-function renderStatistics(context, names, times) {
+(var function renderStatistics(context, names, times) {
   var canvas = document.getElementById('canvas');
   if (canvas.getContext) {
     var ctx = canvas.getContext('2d');
@@ -78,4 +78,4 @@ function renderStatistics(context, names, times) {
   wrapAndRenderText(ctx, text, MARGIN_LEFT, MARGIN_TOP, MAX_WIDTH, lineHeight);
   // рыисуем столбцы гистограммы, высота которых соответствует времени из массива times, отступаем по 50px от краев
   renderHistogram(times, names);
-}
+})();
