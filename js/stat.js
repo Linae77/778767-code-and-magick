@@ -1,10 +1,6 @@
 'use strict';
 // Функция переноса и вывода текста, если он не помещается в заданном поле
 var wrapAndRenderText = function (context, text, marginLeft, marginTop, maxWidth, lineHeight) {
-  var canvas = document.getElementById('canvas');
-  if (canvas.getContext) {
-    var ctx = canvas.getContext('2d');
-  }
   var words = text.split(' ');
   var countWords = words.length;
   var line = '';
@@ -55,7 +51,7 @@ var renderHistogram = function (times, names) {
     }
     ctx.fillStyle = colorRec;
     // Находим максимальное время, соответствующее максимальной высоте столбца гистограммы 150px
-    var maxTimes = maxArrItem (times);
+    var maxTimes = maxArrItem(times);
     var height = Math.round(150 * times[i] / maxTimes); // калибруем относительно maxTimes
     ctx.fillRect(150 + i * 90, 230 - height, 190 + i * 90, 230);
     ctx.fillText('times[i]', 150 + i * 90, 220 - height); // выводим подписи к столбцам
