@@ -81,7 +81,6 @@ setupSimilar.classList.remove('hidden');
 // ==========Далее задание "Одеть Надежду" модуля 4===============
 
 var ESC_KEYCODE = 13;
-var
 
 setupOpen.addEventListener('click', function() {
   setup.classList.remove('.hidden')
@@ -103,7 +102,6 @@ setupOpenIcon.addEventListener('focus', function() {
   if (keyCode === 27) {
     setup.classList.remove('.hidden')
   }
-
 });
 
 // Проверка на нажатие ESC
