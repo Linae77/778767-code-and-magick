@@ -62,7 +62,7 @@
   <div class="demo"></div>
 
   <div class="setup-open">
-    <img src="./img/user-1.jpg" class="setup-open-icon">
+    <img src="./img/user-1.jpg" class="setup-open-icon" tabindex="0">
   </div>
 </header>
 
@@ -183,8 +183,7 @@
 <script type="text/javascript">
   var FIREBALL_SIZE = 22; //константа
   function getFireballSpeed(left) {
-    if (left) {return 5};
-       return 2;
+    return left ? 5 : 2;
     };
   var WIZARD_SPEED = 3;
   var WIZARD_WIDTH = 70;

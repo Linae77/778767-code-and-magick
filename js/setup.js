@@ -1,7 +1,16 @@
 'use strict';
+
+var setup = document.querySelector('.setup');
+var setupSimilar = document.getElementsByClassName('setup-similar');
+
+var setupOpen = document.querySelector('.setup-open');
+var setupClose = document.querySelector('.setup-close');
+var setupOpenIcon = document.querySelector('.setup-open-icon');
+var setupWizard = setup.querySelector('.setup-wizard');
+var similarListElement = setup.querySelector('.setup-similar-list');
+
 // удаляем класс .hidden у объектов с классом .setup
-var setupItems = document.getElementsByClassName('setup');
-setupItems.classList.remove('hidden');
+setup.classList.remove('hidden');
 // генерируем массив из 4 персонажей случайным образом
 var PERSONAGE_NUMBER = 4;
 var createPersonage = function () {
@@ -36,14 +45,14 @@ var createPersonage = function () {
   var eyesColor = eyesColors[generateRandom(5)];
   return {name: personageName, coatColor: coatColor, eyesColor: eyesColor};
 };
-// IIFE функция заполнения массива из 4-х персонажей:
+// функция заполнения массива из 4-х персонажей:
 var createItems = function (number) {
   var items = [];
   for (var i = 0; i < number; i++) {
     items.push(createPersonage());
   }
   return items;
-};
+}();
 // создаем массив волшебников
 var wizards = createItems(PERSONAGE_NUMBER);
 var wizardTemplate = document.getElementById('#similar-wizard-template');
@@ -67,7 +76,65 @@ var addElementsDOM = function (items, block) {
 addElementsDOM(wizards, '.setup-similar-list');
 
 // Показываем блок .setup-similar, удалив у него CSS-класс hidden
-var setupSimilarItems = document.getElementsByClassName('setup-similar');
-setupSimilarItems.classList.remove('hidden');
+setupSimilar.classList.remove('hidden');
 
+// ==========Далее задание "Одеть Надежду" модуля 4===============
 
+var ESC_KEYCODE = 13;
+var
+
+setupOpen.addEventListener('click', function() {
+  setup.classList.remove('.hidden')
+});
+
+setupClose.addEventListener('click', function() {
+  setup.classList.add('.hidden')
+});
+
+setupOpen.addEventListener('keydown', function() {
+  setup.classList.remove('.hidden')
+});
+
+setupClose.addEventListener('keydown', function() {
+  setup.classList.add('.hidden')
+});
+
+setupOpenIcon.addEventListener('focus', function() {
+  if (keyCode === 27) {
+    setup.classList.remove('.hidden')
+  }
+
+});
+
+// Проверка на нажатие ESC
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closePopup();
+  }
+};
+
+// Прячет окно настроек
+var openPopup = function () {
+  setup.classList.remove('hidden');
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});

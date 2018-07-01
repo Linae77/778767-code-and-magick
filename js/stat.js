@@ -1,23 +1,21 @@
 'use strict';
 // Функция переноса и вывода текста, если он не помещается в заданном поле
-var wrapAndRenderText = function (context, text, marginLeft, marginTop, maxWidth, lineHeight) {
+(var wrapAndRenderText = function (context, text, marginLeft, marginTop, maxWidth, lineHeight) {
   var words = text.split(' ');
-  var countWords = words.length;
-  var line = '';
-  for (var n = 0; n < countWords; n++) {
-    var testLine = line + words[n] + ' ';
+  for (var n = 0; n < words.length;; n++) {
+    var testLine = '' + words[n] + ' ';
     var testWidth = context.measureText(testLine).width;
     if (testWidth > maxWidth) {
-      context.fillText(line, marginLeft, marginTop);
+      context.fillText('', marginLeft, marginTop);
       line = words[n] + ' ';
       marginTop += lineHeight;
     } else {
       line = testLine;
     }
   }
-  context.fillText(line, marginLeft, marginTop);
+  context.fillText('', marginLeft, marginTop);
   return wrapAndRenderText;
-}();
+})();
 // Функция поиска максимума в массиве
 var maxArrItem = function (items) {
   var maxItem = items[0];
@@ -27,18 +25,18 @@ var maxArrItem = function (items) {
     }
   }
   return maxItem;
-}();
+};
 // Функция получения случайного оттенка голубого цвета
-var getRandomBlueColor = function () {
+(var getRandomBlueColor = function () {
   var randomRGBA = Math.floor(Math.random() * 50);
   var a = 9 + randomRGBA;
   var b = 212 + randomRGBA;
   var c = 227 + randomRGBA;
   var rgba = {a: a, b: b, c: c};
   return rgba.a + ', ' + rgba.b + ', ' + rgba.c + ', ' + 1; // строка
-}();
+})();
 // Функция построения столбцов гистограммы
-var renderHistogram = function (times, names) {
+(var renderHistogram = function (times, names) {
   var canvas = document.getElementById('canvas');
   if (canvas.getContext) {
     var ctx = canvas.getContext('2d');
@@ -58,9 +56,9 @@ var renderHistogram = function (times, names) {
     ctx.fillText('names[i]', 150 + i * 90, 250);
   }
   return renderHistogram;
-}();
+})();
 // Функция построения статистики игроков
-var renderStatistics = function (context, names, times) {
+(var renderStatistics = function (context, names, times) {
   var canvas = document.getElementById('canvas');
   if (canvas.getContext) {
     var ctx = canvas.getContext('2d');
@@ -81,4 +79,4 @@ var renderStatistics = function (context, names, times) {
   // рыисуем столбцы гистограммы, высота которых соответствует времени из массива times, отступаем по 50px от краев
   renderHistogram(times, names);
   return renderStatistics;
-}();
+})();
