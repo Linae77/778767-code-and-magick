@@ -1,6 +1,6 @@
 'use strict';
 // Функция переноса и вывода текста, если он не помещается в заданном поле
-(var wrapAndRenderText = function (context, text, marginLeft, marginTop, maxWidth, lineHeight) {
+(function wrapAndRenderText (context, text, marginLeft, marginTop, maxWidth, lineHeight) {
   var words = text.split(' ');
   var countWords = words.length;
   var line = '';
@@ -18,7 +18,7 @@
   context.fillText(line, marginLeft, marginTop);
 })();
 // Функция поиска максимума в массиве
-(var maxArrItem = function (items) {
+(function maxArrItem (items) {
   var maxItem = items[0];
   for (var i = 0; i < items.length; i++) {
     if (maxItem < items[i]) {
@@ -28,7 +28,7 @@
   return maxItem;
 })();
 // Функция получения случайного оттенка голубого цвета
-(var getRandomBlueColor = function() {
+(function getRandomBlueColor () {
   var randomRGBA = Math.floor(Math.random() * 50);
   var a = 9 + randomRGBA;
   var b = 212 + randomRGBA;
@@ -37,7 +37,7 @@
   return rgba.a + ', ' + rgba.b + ', ' + rgba.c + ', ' + 1; // строка
 })();
 // Функция построения столбцов гистограммы
-(var renderHistogram = function (times, names) {
+(function renderHistogram (times, names) {
   var canvas = document.getElementById('canvas');
   if (canvas.getContext) {
     var ctx = canvas.getContext('2d');
@@ -58,7 +58,7 @@
   }
 })();
 // Функция построения статистики игроков
-(var function renderStatistics(context, names, times) {
+(function renderStatistics (context, names, times) {
   var canvas = document.getElementById('canvas');
   if (canvas.getContext) {
     var ctx = canvas.getContext('2d');
