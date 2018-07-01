@@ -41,7 +41,7 @@
       }
     }
     return maxItem;
-  }
+  };
   for (var i = 0, colorRec; i < times.length; i++) {
     if (names[i] === 'Вы') {
       colorRec = 'rgba(255, 0, 0, 1)'; // цвет столбца только для игрока - Вы
