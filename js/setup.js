@@ -1,7 +1,7 @@
 'use strict';
 
 var setup = document.querySelector('.setup');
-var setupSimilar = document.getElementsByClassName('setup-similar')
+var setupSimilar = document.getElementsByClassName('setup-similar');
 /*
 var similarListElement = setup.querySelector('.setup-similar-list');
 var setupOpen = document.querySelector('.setup-open');

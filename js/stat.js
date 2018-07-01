@@ -2,7 +2,7 @@
 // Функция переноса и вывода текста, если он не помещается в заданном поле
 (function wrapAndRenderText (context, text, marginLeft, marginTop, maxWidth, lineHeight) {
   var words = text.split(' ');
-  for (var n = 0; n < words.length;; n++) {
+  for (var n = 0; n < words.length; n++) {
     var testLine = '' + words[n] + ' ';
     var testWidth = context.measureText(testLine).width;
     if (testWidth > maxWidth) {
