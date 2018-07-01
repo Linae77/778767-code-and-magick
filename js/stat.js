@@ -17,7 +17,7 @@ var wrapAndRenderText = function(context, text, marginLeft, marginTop, maxWidth,
   }
   context.fillText(line, marginLeft, marginTop);
   return wrapAndRenderText;
-}();
+}(ctx, text, MARGIN_LEFT, MARGIN_TOP, MAX_WIDTH, lineHeight);
 // Функция поиска максимума в массиве
 var maxArrItem = function(items) {
   var maxItem = items[0];
@@ -27,7 +27,7 @@ var maxArrItem = function(items) {
     }
   }
   return maxItem;
-})();
+}(times);
 // Функция получения случайного оттенка голубого цвета
 var getRandomBlueColor = function() {
   var randomRGBA = Math.floor(Math.random() * 50);
@@ -58,7 +58,7 @@ var renderHistogram = function(times, names) {
     ctx.fillText('names[i]', 150 + i * 90, 250);
   }
   return renderHistogram;
-}();
+}(times, names);
 // Функция построения статистики игроков
 var renderStatistics = function(context, names, times) {
   var canvas = document.getElementById('canvas');
@@ -81,4 +81,4 @@ var renderStatistics = function(context, names, times) {
   // рыисуем столбцы гистограммы, высота которых соответствует времени из массива times, отступаем по 50px от краев
   renderHistogram(times, names);
   return renderStatistics
-}();
+}(context, names, times);
